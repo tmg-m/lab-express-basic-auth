@@ -3,6 +3,22 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+body {
+  background-color: grey;
+}
+
 a {
   color: #00B7FF;
+}
+
+#container {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-layout {
+  display: flex;
+  flex-direction: column;
 }

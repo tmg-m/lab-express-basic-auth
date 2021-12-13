@@ -1,0 +1,31 @@
+<div>
+  <form action="/sign-up" method="post" class="form-layout">
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="your username"
+    />
+    <input type="email" id="email" name="email" placeholder="your email" />
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="password"
+    />
+    <input
+      type="password"
+      id="repeatPassword"
+      name="repeatPassword"
+      placeholder="repeat password"
+    />
+    <br>
+    <button type="submit">Sign Up</button>
+  </form>
+  {{#if errorMessage}}
+    <span style="background-color: rgb(255, 51, 51);
+    color: white;">
+      {{errorMessage}}
+    </span>
+  {{/if}}
+</div>
