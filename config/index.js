@@ -1,5 +1,6 @@
 // We reuse this import in order to have access to the `body` property in requests
 const express = require("express");
+const session = require('express-session');
 
 // ℹ️ Responsible for the messages you see in the terminal as requests are coming in
 // https://www.npmjs.com/package/morgan
@@ -26,7 +27,19 @@ module.exports = (app) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
-
+  app.use(
+    session({
+      secret: process.env.SESS_SECRET,
+      resave: true,
+      saveUninitialized: false,
+      cookie: {
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: true,
+        maxAge: 60000 // 60 * 1000 ms === 1 min
+      }
+    })
+  );
   // Normalizes the path to the views folder
   app.set("views", path.join(__dirname, "..", "views"));
   // Sets the view engine to handlebars

@@ -1,0 +1,24 @@
+<div>
+  <form action="/log-in" method="post" class="form-layout">
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="your username"
+    />
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="password"
+    />
+    <br>
+    <button type="submit">log-in</button>
+  </form>
+  {{#if errorMessage}}
+    <span style="background-color: rgb(255, 51, 51);
+    color: white;">
+      {{errorMessage}}
+    </span>
+  {{/if}}
+</div>
