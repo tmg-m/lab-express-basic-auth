@@ -68,7 +68,7 @@ function authRouter() {
                     username,
                   }; 
                 console.log(_id)
-                res.redirect('/');
+                res.redirect('/protected/home');
               } else {
                 return res.render('auth/log-in', { errorMessage: 'Your username or password is Incorrect' });
               }
@@ -76,6 +76,14 @@ function authRouter() {
         } catch (error) {
             next(error)
         }
+
+        // Log out
+        router.post('/log-out', (req, res, next) => {
+            req.session.destroy(err => {
+                if (err) next(err);
+                res.redirect('/');
+              });
+        })
         
     })
 
